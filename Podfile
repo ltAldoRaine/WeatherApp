@@ -7,5 +7,6 @@ target 'WeatherApp' do
 
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireObjectMapper', '~> 5.2.1'
-
+  pod 'Kingfisher', '~> 5.13'
+  
 end
