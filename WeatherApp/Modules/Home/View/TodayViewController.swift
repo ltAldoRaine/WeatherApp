@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TodayViewController.swift
 //  WeatherApp
 //
 //  Created by Beka Gelashvili on 4/16/20.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TodayViewController: UIViewController {
+
+    @IBOutlet weak var titleView: TitleView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        titleView.titleLabel.text = "Today"
     }
 
-
 }
-
