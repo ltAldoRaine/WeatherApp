@@ -10,12 +10,28 @@ import ObjectMapper
 
 class ForecastResponse: Mappable {
 
+    var city: City?
+
     required init?(map: Map) {
 
     }
 
     func mapping(map: Map) {
+        city <- map["city"]
+    }
 
+}
+
+class City: Mappable {
+
+    var name: String?
+
+    required init?(map: Map) {
+
+    }
+
+    func mapping(map: Map) {
+        name <- map["name"]
     }
 
 }
