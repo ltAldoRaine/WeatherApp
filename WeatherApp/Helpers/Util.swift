@@ -31,7 +31,7 @@ class Util {
             }
             UIApplication.shared.open(url)
         }
-        Util.actionSheet(UIViewController: UIViewController, title: "Weather Requires \"When In Use\" Location Access", message: "Please, go to settings and turn on \"When In Use\" location access for WeatherApp", actions: [noAction, settingsAction])
+        Util.actionSheet(UIViewController: UIViewController, title: "WeatherApp Requires \"When In Use\" Location Access", message: "Please, go to settings and turn on \"When In Use\" location access for WeatherApp", actions: [noAction, settingsAction])
     }
 
 }
