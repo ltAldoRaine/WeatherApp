@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import NVActivityIndicatorView
 
 class WeatherInfoCollectionViewCell: UICollectionViewCell {
 
@@ -25,13 +26,19 @@ class TodayViewController: UIViewController {
 
     @IBOutlet weak var titleView: TitleView!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var weatherDataCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
 
     private let weatherApi = WeatherApi()
     private let locationManager = CLLocationManager()
 
+    private var activityViewController: UIActivityViewController?
     private var authorizationStatusIsDenied: Bool {
         return CLLocationManager.authorizationStatus() == .denied
     }
+    private var weatherData = [[String: String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +52,15 @@ class TodayViewController: UIViewController {
         }
         titleView.titleLabel.text = "Today"
         weatherApi.delegate = self
-        weatherApi.today(lat: locationManager.location?.coordinate.latitude, lon: locationManager.location?.coordinate.longitude)
+//        weatherApi.forecast(lat: locationManager.location?.coordinate.latitude, lon: locationManager.location?.coordinate.longitude)
+        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109)
+    }
+
+    @IBAction func onShareButtonTapped() {
+        guard let activityViewController = activityViewController else {
+            return
+        }
+        present(activityViewController, animated: true)
     }
 
 }
@@ -53,11 +68,15 @@ class TodayViewController: UIViewController {
 extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return weatherData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherInfoCollectionViewCell", for: indexPath) as! WeatherInfoCollectionViewCell
+        if let icon = weatherData[indexPath.item]["icon"] {
+            cell.iconImageView.image = UIImage(named: icon)
+        }
+        cell.captionLabel.text = weatherData[indexPath.item]["value"]
         return cell
     }
 
@@ -78,22 +97,59 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 extension TodayViewController: WeatherApiDelegate {
 
-    func notifyBeforeGettingToday() {
-
+    func notifyBeforeGettingForecast() {
+        activityIndicatorView.startAnimating()
     }
 
-    func notifyGettingTodayFinish() {
-
+    func notifyGettingForecastFinish() {
+        activityIndicatorView.stopAnimating()
     }
 
-    func notifyGettingTodaySuccess(response: TodayResponse?) {
-        if let icon = Network.weather(icon: response?.weather?.first?.icon), let url = URL(string: icon) {
-            iconImageView.kf.setImage(with: url)
+    func notifyGettingForecastSuccess(response: ForecastResponse?) {
+        guard let first = response?.list?.first,
+            let firstWeather = first.weather?.first,
+            let firstWeatherMain = first.weatherMain else {
+                return
+        }
+        if let icon = Network.weather(icon: firstWeather.icon), let url = URL(string: icon) {
+            iconImageView.kf.indicatorType = .activity
+            iconImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .failure:
+                    self.iconImageView.image = Image.noImageAvailable
+                default:
+                    return
+                }
+            }
+        }
+        if let name = response?.city?.name, let country = response?.city?.country {
+            locationLabel.text = "\(name), \(country)"
+        }
+        if let temp = firstWeatherMain.temp, let main = firstWeather.main {
+            summaryLabel.text = "\(round(temp))°C | \(main)"
+        }
+        if let humidity = firstWeatherMain.humidity {
+            weatherData.append(["value": "\(humidity)%", "icon": "Humidity"])
+        }
+        let _1h = first.rain?._1h ?? 0
+        weatherData.append(["value": "\(_1h) mm", "icon": "Precipitation"])
+        if let pressure = firstWeatherMain.pressure {
+            weatherData.append(["value": "\(pressure) hPa", "icon": "Presure"])
+        }
+        if let speed = first.wind?.speed {
+            weatherData.append(["value": "\(speed) km/h", "icon": "Wind"])
+        }
+        if let deg = first.wind?.deg {
+            weatherData.append(["value": deg.direction.description, "icon": "Compass"])
+        }
+        weatherDataCollectionView.reloadData()
+        if let id = response?.city?.id, let url = URL(string: "\(Network.weatherWebUrl)/city/\(id)") {
+            activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         }
     }
 
-    func notifyGettingTodayFailure(_ error: String) {
-
+    func notifyGettingForecastFailure(_ error: String) {
+        Util.alert(UIViewController: self, title: "Error", message: error)
     }
 
 }
