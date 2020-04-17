@@ -19,45 +19,49 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxN-U3-bl2">
-                    <rect key="frame" x="207" y="48" width="0.0" height="0.0"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <color key="textColor" name="black"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-rV-VdY" customClass="GradientView" customModule="WeatherApp" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="94" width="414" height="2"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="rIG-Jf-Wxu"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_1Color">
-                            <color key="value" name="magenta"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_2Color">
-                            <color key="value" name="orange"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_3Color">
-                            <color key="value" name="green"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_4Color">
-                            <color key="value" name="blue"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_5Color">
-                            <color key="value" name="yellow"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_6Color">
-                            <color key="value" name="red"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="voy-se-tG4">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxN-U3-bl2">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <color key="textColor" name="black"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-rV-VdY" customClass="GradientView" customModule="WeatherApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="94" width="414" height="2"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="rIG-Jf-Wxu"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="_1Color">
+                                    <color key="value" name="magenta"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="_2Color">
+                                    <color key="value" name="orange"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="_3Color">
+                                    <color key="value" name="green"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="_4Color">
+                                    <color key="value" name="blue"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="_5Color">
+                                    <color key="value" name="yellow"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="_6Color">
+                                    <color key="value" name="red"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="pxN-U3-bl2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Cw1-8g-KIb"/>
-                <constraint firstAttribute="bottom" secondItem="mR5-rV-VdY" secondAttribute="bottom" id="WWH-51-i4Z"/>
-                <constraint firstItem="mR5-rV-VdY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Y6j-fP-R2t"/>
-                <constraint firstItem="pxN-U3-bl2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yry-6B-2zF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mR5-rV-VdY" secondAttribute="trailing" id="rd7-T2-lF6"/>
+                <constraint firstItem="voy-se-tG4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ClV-4o-06J"/>
+                <constraint firstItem="voy-se-tG4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YFL-IQ-taa"/>
+                <constraint firstAttribute="trailing" secondItem="voy-se-tG4" secondAttribute="trailing" id="Yyv-Bc-HGI"/>
+                <constraint firstAttribute="bottom" secondItem="voy-se-tG4" secondAttribute="bottom" id="cVz-Wm-el7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
