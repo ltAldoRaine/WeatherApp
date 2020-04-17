@@ -10,6 +10,15 @@ import UIKit
 
 class Util {
 
+    static func alert(UIViewController: UIViewController, title: String, message: String) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel)
+            alertController.addAction(okAction)
+            UIViewController.present(alertController, animated: true)
+        }
+    }
+
     static func actionSheet(UIViewController: UIViewController, title: String, message: String?, actions: [UIAlertAction]) {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
