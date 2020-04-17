@@ -18,7 +18,7 @@ class WeatherApi {
         guard let lat = lat, let lon = lon else {
             return
         }
-        let url = "\(Network.weatherApirUrl)/weather?lat=\(lat)&lon=\(lon)&appid=\(Network.weatherApiKey)"
+        let url = "\(Network.weatherApirUrl)/weather?lat=\(lat)&lon=\(lon)&units=metric&appid=\(Network.weatherApiKey)"
         delegate?.notifyBeforeGettingToday()
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default)
             .validate()
@@ -39,7 +39,7 @@ class WeatherApi {
         guard let lat = lat, let lon = lon else {
             return
         }
-        let url = "\(Network.weatherApirUrl)/forecast?lat=\(lat)&lon=\(lon)&appid=\(Network.weatherApiKey)"
+        let url = "\(Network.weatherApirUrl)/forecast?lat=\(lat)&lon=\(lon)&units=metric&appid=\(Network.weatherApiKey)"
         delegate?.notifyBeforeGettingForecast()
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default)
             .validate()
