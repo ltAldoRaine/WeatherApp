@@ -14,6 +14,9 @@ class TodayResponse: Mappable {
     var weather: [Weather]?
     var wind: Wind?
     var rain: Rain?
+    var sys: Sys?
+    var id: Int?
+    var name: String?
 
     required init?(map: Map) {
 
@@ -24,6 +27,9 @@ class TodayResponse: Mappable {
         weather <- map["weather"]
         wind <- map["wind"]
         rain <- map["rain"]
+        sys <- map["sys"]
+        id <- map["id"]
+        name <- map["name"]
     }
 
 }
@@ -95,4 +101,17 @@ class Rain: Mappable {
 
 }
 
+class Sys: Mappable {
+
+    var country: String?
+
+    required init?(map: Map) {
+
+    }
+
+    func mapping(map: Map) {
+        country <- map["country"]
+    }
+
+}
 
