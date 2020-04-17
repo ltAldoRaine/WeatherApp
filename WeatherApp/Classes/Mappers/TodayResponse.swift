@@ -13,6 +13,7 @@ class TodayResponse: Mappable {
     var weatherMain: WeatherMain?
     var weather: [Weather]?
     var wind: Wind?
+    var rain: Rain?
 
     required init?(map: Map) {
 
@@ -22,6 +23,7 @@ class TodayResponse: Mappable {
         weatherMain <- map["main"]
         weather <- map["weather"]
         wind <- map["wind"]
+        rain <- map["rain"]
     }
 
 }
@@ -73,6 +75,22 @@ class Wind: Mappable {
     func mapping(map: Map) {
         speed <- map["speed"]
         deg <- map["deg"]
+    }
+
+}
+
+class Rain: Mappable {
+
+    var _1h: Float?
+    var _3h: Float?
+
+    required init?(map: Map) {
+
+    }
+
+    func mapping(map: Map) {
+        _1h <- map["1h"]
+        _3h <- map["3h"]
     }
 
 }
