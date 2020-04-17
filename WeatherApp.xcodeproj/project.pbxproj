@@ -121,8 +121,8 @@
 		3D2E818C24489D090022C287 /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
-				3D2E81922448A1C40022C287 /* TodayResponse.swift */,
 				3D2E81942448A4870022C287 /* ForecastResponse.swift */,
+				3D2E81922448A1C40022C287 /* TodayResponse.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
