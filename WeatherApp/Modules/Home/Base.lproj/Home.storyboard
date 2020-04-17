@@ -198,12 +198,26 @@
                                     <constraint firstItem="o9v-Yg-01f" firstAttribute="height" secondItem="lwY-ON-xsS" secondAttribute="height" multiplier="0.25" id="3Wb-dw-jnX"/>
                                     <constraint firstItem="CWM-wE-LE0" firstAttribute="height" secondItem="lwY-ON-xsS" secondAttribute="height" multiplier="0.065" id="Uy2-zb-H7a"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zBq-vb-xS8" appends="YES" id="Ej9-9R-2uw"/>
+                                </connections>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="00v-Fg-DtD">
+                                <rect key="frame" x="0.0" y="418.33333333333337" width="62.666666666666664" height="59.666666666666686"/>
+                                <color key="tintColor" name="blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="00v-Fg-DtD" secondAttribute="height" multiplier="1:1" id="ufm-db-9yh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="white"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="00v-Fg-DtD" firstAttribute="centerY" secondItem="8hG-wM-bk8" secondAttribute="centerY" id="5u7-ez-h1E"/>
                             <constraint firstItem="lwY-ON-xsS" firstAttribute="top" secondItem="a8H-i5-Bv2" secondAttribute="top" id="MC0-O0-aai"/>
                             <constraint firstItem="a8H-i5-Bv2" firstAttribute="trailing" secondItem="lwY-ON-xsS" secondAttribute="trailing" id="VkS-Kq-yVx"/>
+                            <constraint firstItem="00v-Fg-DtD" firstAttribute="height" secondItem="8hG-wM-bk8" secondAttribute="height" multiplier="0.07" id="e75-HH-ciG"/>
+                            <constraint firstItem="00v-Fg-DtD" firstAttribute="leading" secondItem="a8H-i5-Bv2" secondAttribute="leading" id="fmh-Vi-58H"/>
                             <constraint firstItem="a8H-i5-Bv2" firstAttribute="bottom" secondItem="lwY-ON-xsS" secondAttribute="bottom" id="s8f-KW-gC6"/>
                             <constraint firstItem="lwY-ON-xsS" firstAttribute="leading" secondItem="a8H-i5-Bv2" secondAttribute="leading" id="xXK-HF-Dfi"/>
                         </constraints>
@@ -220,6 +234,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSj-ET-3Js" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="zBq-vb-xS8">
+                    <connections>
+                        <action selector="swipeGestureHandler:" destination="dH3-wP-o6x" id="BNn-au-5jA"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="124.6376811594203" y="85.714285714285708"/>
         </scene>
@@ -284,6 +303,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="projective" catalog="system" width="128" height="83"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
         <namedColor name="black">

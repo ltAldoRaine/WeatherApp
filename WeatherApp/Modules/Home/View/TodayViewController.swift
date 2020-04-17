@@ -38,6 +38,12 @@ class TodayViewController: UIViewController {
     private var authorizationStatusIsDenied: Bool {
         return CLLocationManager.authorizationStatus() == .denied
     }
+    private var currentLatitude: CLLocationDegrees? {
+        return locationManager.location?.coordinate.latitude
+    }
+    private var currentLongitude: CLLocationDegrees? {
+        return locationManager.location?.coordinate.longitude
+    }
     private var weatherData = [[String: String]]()
 
     override func viewDidLoad() {
@@ -61,6 +67,20 @@ class TodayViewController: UIViewController {
             return
         }
         present(activityViewController, animated: true)
+    }
+
+    @IBAction func swipeGestureHandler(_ sender: UISwipeGestureRecognizer) {
+        resetDataAndViews()
+        weatherApi.today(lat: currentLatitude, lon: currentLongitude)
+    }
+
+    private func resetDataAndViews() {
+        iconImageView.image = nil
+        locationLabel.text = "..."
+        summaryLabel.text = "..."
+        weatherData.removeAll()
+        weatherDataCollectionView.reloadData()
+        activityViewController = nil
     }
 
 }
