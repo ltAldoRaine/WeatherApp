@@ -52,8 +52,8 @@ class TodayViewController: UIViewController {
         }
         titleView.titleLabel.text = "Today"
         weatherApi.delegate = self
-//        weatherApi.forecast(lat: locationManager.location?.coordinate.latitude, lon: locationManager.location?.coordinate.longitude)
-        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109)
+        weatherApi.today(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
+//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109 cachePolicy: .returnCacheDataElseLoad)
     }
 
     @IBAction func onShareButtonTapped() {
@@ -97,18 +97,18 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 extension TodayViewController: WeatherApiDelegate {
 
-    func notifyBeforeGettingForecast() {
+    func notifyBeforeGettingToday() {
         activityIndicatorView.startAnimating()
     }
 
-    func notifyGettingForecastFinish() {
+    func notifyGettingTodayFinish() {
         activityIndicatorView.stopAnimating()
     }
 
-    func notifyGettingForecastSuccess(response: ForecastResponse?) {
-        guard let first = response?.list?.first,
-            let firstWeather = first.weather?.first,
-            let firstWeatherMain = first.weatherMain else {
+    func notifyGettingTodaySuccess(response: TodayResponse?) {
+        guard let response = response,
+            let firstWeather = response.weather?.first,
+            let firstWeatherMain = response.weatherMain else {
                 return
         }
         if let icon = Network.weather(icon: firstWeather.icon), let url = URL(string: icon) {
@@ -122,7 +122,7 @@ extension TodayViewController: WeatherApiDelegate {
                 }
             }
         }
-        if let name = response?.city?.name, let country = response?.city?.country {
+        if let name = response.name, let country = response.sys?.country {
             locationLabel.text = "\(name), \(country)"
         }
         if let temp = firstWeatherMain.temp, let main = firstWeather.main {
@@ -131,24 +131,24 @@ extension TodayViewController: WeatherApiDelegate {
         if let humidity = firstWeatherMain.humidity {
             weatherData.append(["value": "\(humidity)%", "icon": "Humidity"])
         }
-        let _1h = first.rain?._1h ?? 0
+        let _1h = response.rain?._1h ?? 0
         weatherData.append(["value": "\(_1h) mm", "icon": "Precipitation"])
         if let pressure = firstWeatherMain.pressure {
             weatherData.append(["value": "\(pressure) hPa", "icon": "Presure"])
         }
-        if let speed = first.wind?.speed {
+        if let speed = response.wind?.speed {
             weatherData.append(["value": "\(speed) km/h", "icon": "Wind"])
         }
-        if let deg = first.wind?.deg {
+        if let deg = response.wind?.deg {
             weatherData.append(["value": deg.direction.description, "icon": "Compass"])
         }
         weatherDataCollectionView.reloadData()
-        if let id = response?.city?.id, let url = URL(string: "\(Network.weatherWebUrl)/city/\(id)") {
+        if let id = response.id, let url = URL(string: "\(Network.weatherWebUrl)/city/\(id)") {
             activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         }
     }
 
-    func notifyGettingForecastFailure(_ error: String) {
+    func notifyGettingTodayFailure(_ error: String) {
         Util.alert(UIViewController: self, title: "Error", message: error)
     }
 

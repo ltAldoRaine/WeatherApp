@@ -12,10 +12,13 @@ import Kingfisher
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    private func setURLCacheCapacity() {
+        URLCache.shared.diskCapacity = 200 * 1024 * 1024
+        URLCache.shared.memoryCapacity = 0
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setURLCacheCapacity()
         return true
     }
 

@@ -26,6 +26,7 @@
 		3D4A12872448747F00B4F1B7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A12852448747F00B4F1B7 /* Home.storyboard */; };
 		3D4A12892448748000B4F1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A12882448748000B4F1B7 /* Assets.xcassets */; };
 		3D4A128C2448748000B4F1B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A128A2448748000B4F1B7 /* LaunchScreen.storyboard */; };
+		3D90BB4E2449E288000A3091 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB4D2449E288000A3091 /* DoubleExtension.swift */; };
 		6D642A40FAED37777963D745 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71209418853AB456C2D5DF7 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		3D4A12882448748000B4F1B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D4A128B2448748000B4F1B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D4A128D2448748000B4F1B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D90BB4D2449E288000A3091 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		65D886433B4458EDDA60E190 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C71209418853AB456C2D5DF7 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 			children = (
 				3D2E8185244890FB0022C287 /* UIViewExtension.swift */,
 				3D1920CE2449BCF10087F048 /* FloatExtension.swift */,
+				3D90BB4D2449E288000A3091 /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				3D4A12822448747E00B4F1B7 /* SceneDelegate.swift in Sources */,
 				3D2E8186244890FB0022C287 /* UIViewExtension.swift in Sources */,
 				3D1920CD2449B5D00087F048 /* Image.swift in Sources */,
+				3D90BB4E2449E288000A3091 /* DoubleExtension.swift in Sources */,
 				3D1920CF2449BCF10087F048 /* FloatExtension.swift in Sources */,
 				3D2E81972448A9220022C287 /* Util.swift in Sources */,
 				3D2E81912448A00C0022C287 /* WeatherApiDelegate.swift in Sources */,
