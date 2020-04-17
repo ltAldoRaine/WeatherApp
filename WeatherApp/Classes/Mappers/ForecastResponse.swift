@@ -26,6 +26,7 @@ class ForecastResponse: Mappable {
 
 class City: Mappable {
 
+    var id: Int?
     var name: String?
     var country: String?
 
@@ -34,6 +35,7 @@ class City: Mappable {
     }
 
     func mapping(map: Map) {
+        id <- map["id"]
         name <- map["name"]
         country <- map["country"]
     }
