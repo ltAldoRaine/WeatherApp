@@ -64,6 +64,7 @@ class Weather: Mappable {
 class Wind: Mappable {
 
     var speed: Float?
+    var deg: Float?
 
     required init?(map: Map) {
 
@@ -71,6 +72,7 @@ class Wind: Mappable {
 
     func mapping(map: Map) {
         speed <- map["speed"]
+        deg <- map["deg"]
     }
 
 }
