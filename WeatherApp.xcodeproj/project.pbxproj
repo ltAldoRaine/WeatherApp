@@ -27,6 +27,10 @@
 		3D4A12892448748000B4F1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A12882448748000B4F1B7 /* Assets.xcassets */; };
 		3D4A128C2448748000B4F1B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A128A2448748000B4F1B7 /* LaunchScreen.storyboard */; };
 		3D90BB4E2449E288000A3091 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB4D2449E288000A3091 /* DoubleExtension.swift */; };
+		3D90BB52244A0127000A3091 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB51244A0127000A3091 /* DateExtension.swift */; };
+		3D90BB58244A028A000A3091 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB57244A028A000A3091 /* StringExtension.swift */; };
+		3D90BB5A244A1E1E000A3091 /* ForecastTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D90BB59244A1E1E000A3091 /* ForecastTableViewSectionHeaderView.xib */; };
+		3D90BB5C244A1E4C000A3091 /* ForecastTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB5B244A1E4C000A3091 /* ForecastTableViewSectionHeaderView.swift */; };
 		6D642A40FAED37777963D745 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C71209418853AB456C2D5DF7 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,10 @@
 		3D4A128B2448748000B4F1B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D4A128D2448748000B4F1B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D90BB4D2449E288000A3091 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		3D90BB51244A0127000A3091 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		3D90BB57244A028A000A3091 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		3D90BB59244A1E1E000A3091 /* ForecastTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
+		3D90BB5B244A1E4C000A3091 /* ForecastTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		65D886433B4458EDDA60E190 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C71209418853AB456C2D5DF7 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +92,7 @@
 				3D2E8177244886570022C287 /* View */,
 				3D4A12852448747F00B4F1B7 /* Home.storyboard */,
 				3D2E817D24488AA60022C287 /* TitleView.xib */,
+				3D90BB59244A1E1E000A3091 /* ForecastTableViewSectionHeaderView.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -91,9 +100,10 @@
 		3D2E8177244886570022C287 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3D2E8178244888F90022C287 /* TodayViewController.swift */,
+				3D90BB5B244A1E4C000A3091 /* ForecastTableViewSectionHeaderView.swift */,
 				3D2E817A244889060022C287 /* ForecastViewController.swift */,
 				3D2E817F24488AC00022C287 /* TitleView.swift */,
+				3D2E8178244888F90022C287 /* TodayViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,9 +120,11 @@
 		3D2E8184244890E90022C287 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3D2E8185244890FB0022C287 /* UIViewExtension.swift */,
-				3D1920CE2449BCF10087F048 /* FloatExtension.swift */,
+				3D90BB51244A0127000A3091 /* DateExtension.swift */,
 				3D90BB4D2449E288000A3091 /* DoubleExtension.swift */,
+				3D1920CE2449BCF10087F048 /* FloatExtension.swift */,
+				3D90BB57244A028A000A3091 /* StringExtension.swift */,
+				3D2E8185244890FB0022C287 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -261,6 +273,7 @@
 				3D4A12892448748000B4F1B7 /* Assets.xcassets in Resources */,
 				3D4A12872448747F00B4F1B7 /* Home.storyboard in Resources */,
 				3D2E817E24488AA60022C287 /* TitleView.xib in Resources */,
+				3D90BB5A244A1E1E000A3091 /* ForecastTableViewSectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,16 +327,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4A12802448747E00B4F1B7 /* AppDelegate.swift in Sources */,
+				3D90BB52244A0127000A3091 /* DateExtension.swift in Sources */,
 				3D2E817B244889060022C287 /* ForecastViewController.swift in Sources */,
 				3D2E818B24489B620022C287 /* Network.swift in Sources */,
 				3D2E81932448A1C40022C287 /* TodayResponse.swift in Sources */,
 				3D2E818324488BBD0022C287 /* GradientView.swift in Sources */,
+				3D90BB5C244A1E4C000A3091 /* ForecastTableViewSectionHeaderView.swift in Sources */,
 				3D4A12822448747E00B4F1B7 /* SceneDelegate.swift in Sources */,
 				3D2E8186244890FB0022C287 /* UIViewExtension.swift in Sources */,
 				3D1920CD2449B5D00087F048 /* Image.swift in Sources */,
 				3D90BB4E2449E288000A3091 /* DoubleExtension.swift in Sources */,
 				3D1920CF2449BCF10087F048 /* FloatExtension.swift in Sources */,
 				3D2E81972448A9220022C287 /* Util.swift in Sources */,
+				3D90BB58244A028A000A3091 /* StringExtension.swift in Sources */,
 				3D2E81912448A00C0022C287 /* WeatherApiDelegate.swift in Sources */,
 				3D2E8179244888F90022C287 /* TodayViewController.swift in Sources */,
 				3D2E818024488AC00022C287 /* TitleView.swift in Sources */,
