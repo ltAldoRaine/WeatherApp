@@ -10,7 +10,7 @@ import ObjectMapper
 
 class ForecastResponse: Mappable {
 
-    var list: [TodayResponse]?
+    var list: [Forecast]?
     var city: City?
 
     required init?(map: Map) {
@@ -20,6 +20,28 @@ class ForecastResponse: Mappable {
     func mapping(map: Map) {
         city <- map["city"]
         list <- map["list"]
+    }
+
+}
+
+class Forecast: Mappable {
+
+    var dtTxt: String?
+    var weatherMain: WeatherMain?
+    var weather: [Weather]?
+    var wind: Wind?
+    var rain: Rain?
+
+    required init?(map: Map) {
+
+    }
+
+    func mapping(map: Map) {
+        dtTxt <- map["dt_txt"]
+        weatherMain <- map["main"]
+        weather <- map["weather"]
+        wind <- map["wind"]
+        rain <- map["rain"]
     }
 
 }
