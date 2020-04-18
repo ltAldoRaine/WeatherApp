@@ -50,6 +50,7 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
@@ -58,8 +59,7 @@ class TodayViewController: UIViewController {
         }
         titleView.titleLabel.text = "Today"
         weatherApi.delegate = self
-        weatherApi.today(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
-//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109, cachePolicy: .returnCacheDataElseLoad)
+        lightRefresh()
     }
 
     @IBAction func onShareButtonTapped() {
@@ -70,9 +70,7 @@ class TodayViewController: UIViewController {
     }
 
     @IBAction func swipeGestureHandler(_ sender: UISwipeGestureRecognizer) {
-        resetDataAndViews()
-        weatherApi.today(lat: currentLatitude, lon: currentLongitude)
-//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109)
+        forceRefresh()
     }
 
     private func resetDataAndViews() {
@@ -82,6 +80,18 @@ class TodayViewController: UIViewController {
         weatherData.removeAll()
         weatherDataCollectionView.reloadData()
         activityViewController = nil
+    }
+
+    private func lightRefresh() {
+        resetDataAndViews()
+        weatherApi.today(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
+//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109, cachePolicy: .returnCacheDataElseLoad)
+    }
+
+    private func forceRefresh() {
+        resetDataAndViews()
+        weatherApi.today(lat: currentLatitude, lon: currentLongitude)
+//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109)
     }
 
     private func updateFRD(temp: Float?) {
@@ -99,6 +109,17 @@ class TodayViewController: UIViewController {
             ],
             "temp": temp
             ])
+    }
+
+}
+
+extension TodayViewController: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        lightRefresh()
+        if authorizationStatusIsDenied {
+            Util.locationActionSheet(UIViewController: self)
+        }
     }
 
 }

@@ -54,32 +54,52 @@ class ForecastViewController: UIViewController {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
         if authorizationStatusIsDenied {
             Util.locationActionSheet(UIViewController: self)
         }
-        titleView.titleLabel.text = "..."
         let nib = UINib(nibName: "ForecastTableViewSectionHeaderView", bundle: nil)
         forecastTableView.rowHeight = view.frame.height / 6.0
         forecastTableView.sectionHeaderHeight = view.frame.height / 14.0
         forecastTableView.register(nib, forHeaderFooterViewReuseIdentifier: "ForecastTableViewSectionHeaderView")
         weatherApi.delegate = self
-        weatherApi.forecast(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
-//        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109, cachePolicy: .returnCacheDataElseLoad)
+        lightRefresh()
     }
 
     @IBAction func swipeGestureHandler(_ sender: UISwipeGestureRecognizer) {
-        resetDataAndViews()
-        weatherApi.forecast(lat: currentLatitude, lon: currentLongitude)
-//        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109)
+        forceRefresh()
     }
 
     private func resetDataAndViews() {
         titleView.titleLabel.text = "..."
         forecastData.removeAll()
         forecastTableView.reloadData()
+    }
+
+    private func lightRefresh() {
+        resetDataAndViews()
+        weatherApi.forecast(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
+//        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109, cachePolicy: .returnCacheDataElseLoad)
+    }
+
+    private func forceRefresh() {
+        resetDataAndViews()
+        weatherApi.forecast(lat: currentLatitude, lon: currentLongitude)
+//        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109)
+    }
+
+}
+
+extension ForecastViewController: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        lightRefresh()
+        if authorizationStatusIsDenied {
+            Util.locationActionSheet(UIViewController: self)
+        }
     }
 
 }
@@ -169,7 +189,7 @@ extension ForecastViewController: WeatherApiDelegate {
             let day = date.toString(format: "dd")
             var exists = false
             forecastData.forEach {
-                if  $0.date.toString(format: "dd") == day {
+                if $0.date.toString(format: "dd") == day {
                     exists = true
                     return
                 }
