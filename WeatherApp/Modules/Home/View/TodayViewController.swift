@@ -147,7 +147,7 @@ extension TodayViewController: WeatherApiDelegate {
             locationLabel.text = "\(name), \(country)"
         }
         if let temp = firstWeatherMain.temp, let main = firstWeather.main {
-            summaryLabel.text = "\(round(temp))°C | \(main)"
+            summaryLabel.text = "\(Int(round(temp)))°C | \(main)"
         }
         if let humidity = firstWeatherMain.humidity {
             weatherData.append(["value": "\(humidity)%", "icon": "Humidity"])

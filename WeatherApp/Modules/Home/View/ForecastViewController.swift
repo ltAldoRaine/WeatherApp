@@ -114,7 +114,7 @@ extension ForecastViewController: UITableViewDataSource {
         cell.hourLabel.text = forecast.dtTxt?.toDate(format: "yyyy-MM-dd HH:mm:ss").toString(format: "HH:mm")
         cell.summaryLabel.text = firstWeather?.main
         if let temp = firstWeatherMain?.temp {
-            cell.tempLabel.text = "\(round(temp))°"
+            cell.tempLabel.text = "\(Int(round(temp)))°"
         }
         if indexPath.row != section.list.count - 1 && !(indexPath.section == 0 && indexPath.row == 0) {
             cell.separatorView.isHidden = false
