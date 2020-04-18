@@ -422,6 +422,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="blue"/>
                     </tabBar>
                     <connections>
                         <segue destination="dH3-wP-o6x" kind="relationship" relationship="viewControllers" id="co3-fM-pql"/>
