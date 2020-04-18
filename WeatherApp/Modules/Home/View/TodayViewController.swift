@@ -48,10 +48,10 @@ class TodayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
         titleView.titleLabel.text = "Today"
@@ -112,7 +112,10 @@ class TodayViewController: UIViewController {
 extension TodayViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        lightRefresh()
+        // MARK - sometimes delay is necessary to get coordinates
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+            self.lightRefresh()
+        }
         if authorizationStatusIsDenied {
             Util.locationActionSheet(UIViewController: self)
         }

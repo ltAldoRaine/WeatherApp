@@ -52,10 +52,10 @@ class ForecastViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
         let nib = UINib(nibName: "ForecastTableViewSectionHeaderView", bundle: nil)
