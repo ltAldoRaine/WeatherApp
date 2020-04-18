@@ -113,8 +113,12 @@ extension TodayViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // MARK - sometimes delay is necessary to get coordinates
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
-            self.lightRefresh()
+        if currentLatitude == nil || currentLongitude == nil {
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+                self.lightRefresh()
+            }
+        } else {
+            lightRefresh()
         }
         if authorizationStatusIsDenied {
             Util.locationActionSheet(UIViewController: self)
