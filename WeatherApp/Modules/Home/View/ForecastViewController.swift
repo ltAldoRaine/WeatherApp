@@ -61,14 +61,17 @@ class ForecastViewController: UIViewController {
         titleView.titleLabel.text = "..."
         let nib = UINib(nibName: "ForecastTableViewSectionHeaderView", bundle: nil)
         forecastTableView.rowHeight = view.frame.height / 6.0
+        forecastTableView.sectionHeaderHeight = view.frame.height / 14.0
         forecastTableView.register(nib, forHeaderFooterViewReuseIdentifier: "ForecastTableViewSectionHeaderView")
         weatherApi.delegate = self
         weatherApi.forecast(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
+//        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109, cachePolicy: .returnCacheDataElseLoad)
     }
 
     @IBAction func swipeGestureHandler(_ sender: UISwipeGestureRecognizer) {
         resetDataAndViews()
         weatherApi.forecast(lat: currentLatitude, lon: currentLongitude)
+//        weatherApi.forecast(lat: 41.72784423828125, lon: 44.80842660755109)
     }
 
     private func resetDataAndViews() {

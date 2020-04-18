@@ -59,7 +59,7 @@ class TodayViewController: UIViewController {
         titleView.titleLabel.text = "Today"
         weatherApi.delegate = self
         weatherApi.today(lat: currentLatitude, lon: currentLongitude, cachePolicy: .returnCacheDataElseLoad)
-//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109 cachePolicy: .returnCacheDataElseLoad)
+//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109, cachePolicy: .returnCacheDataElseLoad)
     }
 
     @IBAction func onShareButtonTapped() {
@@ -72,6 +72,7 @@ class TodayViewController: UIViewController {
     @IBAction func swipeGestureHandler(_ sender: UISwipeGestureRecognizer) {
         resetDataAndViews()
         weatherApi.today(lat: currentLatitude, lon: currentLongitude)
+//        weatherApi.today(lat: 41.72784423828125, lon: 44.80842660755109)
     }
 
     private func resetDataAndViews() {
