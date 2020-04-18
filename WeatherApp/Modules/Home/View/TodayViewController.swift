@@ -54,12 +54,8 @@ class TodayViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        if authorizationStatusIsDenied {
-            Util.locationActionSheet(UIViewController: self)
-        }
         titleView.titleLabel.text = "Today"
         weatherApi.delegate = self
-        lightRefresh()
     }
 
     @IBAction func onShareButtonTapped() {
