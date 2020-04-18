@@ -151,8 +151,8 @@ extension TodayViewController: WeatherApiDelegate {
         if let humidity = firstWeatherMain.humidity {
             weatherData.append(["value": "\(humidity)%", "icon": "Humidity"])
         }
-        let _1h = response.rain?._1h ?? 0
-        weatherData.append(["value": "\(_1h) mm", "icon": "Precipitation"])
+        let _3h = response.rain?._3h ?? 0
+        weatherData.append(["value": "\(_3h) mm", "icon": "Precipitation"])
         if let pressure = firstWeatherMain.pressure {
             weatherData.append(["value": "\(pressure) hPa", "icon": "Presure"])
         }
