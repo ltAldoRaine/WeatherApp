@@ -24,6 +24,8 @@ class ForecastTableViewCell: UITableViewCell {
         summaryLabel.text = nil
         tempLabel.text = nil
         separatorView.isHidden = true
+        contentView.borderWidth = 0
+        contentView.borderColor = nil
     }
 
 }
@@ -112,10 +114,14 @@ extension ForecastViewController: UITableViewDataSource {
         cell.hourLabel.text = forecast.dtTxt?.toDate(format: "yyyy-MM-dd HH:mm:ss").toString(format: "HH:mm")
         cell.summaryLabel.text = firstWeather?.main
         if let temp = firstWeatherMain?.temp {
-            cell.tempLabel.text = "\(round(temp))°C"
+            cell.tempLabel.text = "\(round(temp))°"
         }
-        if indexPath.row != section.list.count - 1 {
+        if indexPath.row != section.list.count - 1 && !(indexPath.section == 0 && indexPath.row == 0) {
             cell.separatorView.isHidden = false
+        }
+        if indexPath.section == 0 && indexPath.row == 0 {
+            cell.contentView.borderWidth = 1.0
+            cell.contentView.borderColor = .blue
         }
         return cell
     }
