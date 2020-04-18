@@ -201,8 +201,8 @@
                                     <outletCollection property="gestureRecognizers" destination="zBq-vb-xS8" appends="YES" id="Ej9-9R-2uw"/>
                                 </connections>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="00v-Fg-DtD">
-                                <rect key="frame" x="0.0" y="418.33333333333337" width="62.666666666666664" height="59.666666666666686"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LongArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="00v-Fg-DtD">
+                                <rect key="frame" x="0.0" y="425.66666666666669" width="44.666666666666664" height="44.666666666666686"/>
                                 <color key="tintColor" name="blue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="00v-Fg-DtD" secondAttribute="height" multiplier="1:1" id="ufm-db-9yh"/>
@@ -216,7 +216,7 @@
                             <constraint firstItem="lwY-ON-xsS" firstAttribute="top" secondItem="a8H-i5-Bv2" secondAttribute="top" id="MC0-O0-aai"/>
                             <constraint firstItem="wwa-3y-CAe" firstAttribute="height" secondItem="8hG-wM-bk8" secondAttribute="height" multiplier="0.1" id="MpJ-7S-vWy"/>
                             <constraint firstItem="a8H-i5-Bv2" firstAttribute="trailing" secondItem="lwY-ON-xsS" secondAttribute="trailing" id="VkS-Kq-yVx"/>
-                            <constraint firstItem="00v-Fg-DtD" firstAttribute="height" secondItem="8hG-wM-bk8" secondAttribute="height" multiplier="0.07" id="e75-HH-ciG"/>
+                            <constraint firstItem="00v-Fg-DtD" firstAttribute="height" secondItem="8hG-wM-bk8" secondAttribute="height" multiplier="0.05" id="e75-HH-ciG"/>
                             <constraint firstItem="00v-Fg-DtD" firstAttribute="leading" secondItem="a8H-i5-Bv2" secondAttribute="leading" id="fmh-Vi-58H"/>
                             <constraint firstItem="a8H-i5-Bv2" firstAttribute="bottom" secondItem="lwY-ON-xsS" secondAttribute="bottom" id="s8f-KW-gC6"/>
                             <constraint firstItem="lwY-ON-xsS" firstAttribute="leading" secondItem="a8H-i5-Bv2" secondAttribute="leading" id="xXK-HF-Dfi"/>
@@ -434,6 +434,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LongArrowRight" width="160.33332824707031" height="73.666664123535156"/>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="projective" catalog="system" width="128" height="83"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
