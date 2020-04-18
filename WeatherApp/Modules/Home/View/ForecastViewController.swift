@@ -58,9 +58,6 @@ class ForecastViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        if authorizationStatusIsDenied {
-            Util.locationActionSheet(UIViewController: self)
-        }
         let nib = UINib(nibName: "ForecastTableViewSectionHeaderView", bundle: nil)
         forecastTableView.rowHeight = view.frame.height / 6.0
         forecastTableView.sectionHeaderHeight = view.frame.height / 14.0
