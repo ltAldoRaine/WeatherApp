@@ -26,6 +26,7 @@
 		3D4A12872448747F00B4F1B7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A12852448747F00B4F1B7 /* Home.storyboard */; };
 		3D4A12892448748000B4F1B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A12882448748000B4F1B7 /* Assets.xcassets */; };
 		3D4A128C2448748000B4F1B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A128A2448748000B4F1B7 /* LaunchScreen.storyboard */; };
+		3D6A9C82244B035C004388DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A9C81244B035C004388DD /* GoogleService-Info.plist */; };
 		3D90BB4E2449E288000A3091 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB4D2449E288000A3091 /* DoubleExtension.swift */; };
 		3D90BB52244A0127000A3091 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB51244A0127000A3091 /* DateExtension.swift */; };
 		3D90BB58244A028A000A3091 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90BB57244A028A000A3091 /* StringExtension.swift */; };
@@ -57,6 +58,7 @@
 		3D4A12882448748000B4F1B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D4A128B2448748000B4F1B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D4A128D2448748000B4F1B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D6A9C81244B035C004388DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D90BB4D2449E288000A3091 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		3D90BB51244A0127000A3091 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3D90BB57244A028A000A3091 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				3D4A12812448747E00B4F1B7 /* SceneDelegate.swift */,
 				3D4A128A2448748000B4F1B7 /* LaunchScreen.storyboard */,
 				3D4A12882448748000B4F1B7 /* Assets.xcassets */,
+				3D6A9C81244B035C004388DD /* GoogleService-Info.plist */,
 				3D4A128D2448748000B4F1B7 /* Info.plist */,
 			);
 			path = WeatherApp;
@@ -274,6 +277,7 @@
 				3D4A12872448747F00B4F1B7 /* Home.storyboard in Resources */,
 				3D2E817E24488AA60022C287 /* TitleView.xib in Resources */,
 				3D90BB5A244A1E1E000A3091 /* ForecastTableViewSectionHeaderView.xib in Resources */,
+				3D6A9C82244B035C004388DD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

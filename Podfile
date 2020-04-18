@@ -9,5 +9,6 @@ target 'WeatherApp' do
   pod 'AlamofireObjectMapper', '~> 5.2.1'
   pod 'Kingfisher', '~> 5.13'
   pod 'NVActivityIndicatorView'
+  pod 'Firebase/Database'
   
 end

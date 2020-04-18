@@ -8,9 +8,12 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var ref: DatabaseReference!
 
     private func setURLCacheCapacity() {
         URLCache.shared.diskCapacity = 200 * 1024 * 1024
@@ -19,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setURLCacheCapacity()
+        FirebaseApp.configure()
+        ref = Database.database().reference()
         return true
     }
 

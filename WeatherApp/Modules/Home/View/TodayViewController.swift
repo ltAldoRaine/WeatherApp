@@ -84,6 +84,23 @@ class TodayViewController: UIViewController {
         activityViewController = nil
     }
 
+    private func updateFRD(temp: Float?) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let uuidString = UIDevice.current.identifierForVendor?.uuidString,
+            let currentLatitude = currentLatitude,
+            let currentLongitude = currentLongitude,
+            let temp = temp else {
+                return
+        }
+        appDelegate.ref.child("devices").child(uuidString).setValue([
+            "cord": [
+                "lat": currentLatitude,
+                "lon": currentLongitude
+            ],
+            "temp": temp
+            ])
+    }
+
 }
 
 extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -127,6 +144,7 @@ extension TodayViewController: WeatherApiDelegate {
     }
 
     func notifyGettingTodaySuccess(response: TodayResponse?) {
+        updateFRD(temp: response?.weatherMain?.temp)
         guard let response = response,
             let firstWeather = response.weather?.first,
             let firstWeatherMain = response.weatherMain else {
