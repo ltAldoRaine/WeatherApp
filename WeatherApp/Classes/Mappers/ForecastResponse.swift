@@ -26,22 +26,22 @@ class ForecastResponse: Mappable {
 
 class Forecast: Mappable {
 
-    var dtTxt: String?
     var weatherMain: WeatherMain?
     var weather: [Weather]?
     var wind: Wind?
     var rain: Rain?
+    var dtTxt: String?
 
     required init?(map: Map) {
 
     }
 
     func mapping(map: Map) {
-        dtTxt <- map["dt_txt"]
         weatherMain <- map["main"]
         weather <- map["weather"]
         wind <- map["wind"]
         rain <- map["rain"]
+        dtTxt <- map["dt_txt"]
     }
 
 }

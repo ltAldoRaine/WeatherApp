@@ -14,6 +14,8 @@ class TodayResponse: Mappable {
     var weather: [Weather]?
     var wind: Wind?
     var rain: Rain?
+    var dt: Double?
+    var timezone: Double?
     var sys: Sys?
     var id: Int?
     var name: String?
@@ -27,6 +29,8 @@ class TodayResponse: Mappable {
         weather <- map["weather"]
         wind <- map["wind"]
         rain <- map["rain"]
+        dt <- map["dt"]
+        timezone <- map["timezone"]
         sys <- map["sys"]
         id <- map["id"]
         name <- map["name"]

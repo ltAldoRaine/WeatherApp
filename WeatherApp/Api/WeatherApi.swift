@@ -32,6 +32,16 @@ class WeatherApi {
                     switch response.result {
                     case .success:
                         let todayResponse = response.value
+                        // MARK - Renew cache if difference between api date and current date is greater than 10 minute
+                        if let dt = todayResponse?.dt,
+                            let timezone = todayResponse?.timezone,
+                            let now = Date().GMTTimeDate {
+                            let from = Date(timeIntervalSince1970: dt + timezone)
+                            if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute > 10 {
+                                self.today(lat: lat, lon: lon)
+                                return
+                            }
+                        }
                         self.delegate?.notifyGettingTodaySuccess(response: todayResponse)
                     case .failure(let error):
                         self.delegate?.notifyGettingTodayFailure("An error occurred, please try again later")
@@ -61,6 +71,14 @@ class WeatherApi {
                     switch response.result {
                     case .success:
                         let forecastResponse = response.value
+                        // MARK - Renew cache if difference between api date and current date is greater or equal than 3 hour
+                        if let from = forecastResponse?.list?.first?.dtTxt?.toDate(format: "yyyy-MM-dd HH:mm:ss"),
+                            let now = Date().GMTTimeDate {
+                            if let hour = Calendar.current.dateComponents([.hour], from: from, to: now).hour, hour >= 3 {
+                                self.forecast(lat: lat, lon: lon)
+                                return
+                            }
+                        }
                         self.delegate?.notifyGettingForecastSuccess(response: forecastResponse)
                     case .failure(let error):
                         self.delegate?.notifyGettingForecastFailure("An error occurred, please try again later")
