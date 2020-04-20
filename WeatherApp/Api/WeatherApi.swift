@@ -37,7 +37,6 @@ class WeatherApi {
                             let timezone = todayResponse?.timezone,
                             let now = Date().GMTTimeDate {
                             let from = Date(timeIntervalSince1970: dt + timezone)
-                            print(Calendar.current.dateComponents([.minute], from: from, to: now).minute)
                             if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute > 10 {
                                 self.today(lat: lat, lon: lon)
                                 return
