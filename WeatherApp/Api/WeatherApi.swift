@@ -37,6 +37,7 @@ class WeatherApi {
                             let timezone = todayResponse?.timezone,
                             let now = Date().GMTTimeDate {
                             let from = Date(timeIntervalSince1970: dt + timezone)
+                            print(Calendar.current.dateComponents([.minute], from: from, to: now).minute)
                             if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute > 10 {
                                 self.today(lat: lat, lon: lon)
                                 return
@@ -71,10 +72,10 @@ class WeatherApi {
                     switch response.result {
                     case .success:
                         let forecastResponse = response.value
-                        // MARK - Renew cache if difference between api date and current date is greater or equal than 3 hour
+                        // MARK - Renew cache if difference between api date and current date is greater or equal than 6 hour
                         if let from = forecastResponse?.list?.first?.dtTxt?.toDate(format: "yyyy-MM-dd HH:mm:ss"),
                             let now = Date().GMTTimeDate {
-                            if let hour = Calendar.current.dateComponents([.hour], from: from, to: now).hour, hour >= 3 {
+                            if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute >= 360 {
                                 self.forecast(lat: lat, lon: lon)
                                 return
                             }
