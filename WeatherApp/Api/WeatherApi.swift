@@ -39,9 +39,11 @@ class WeatherApi {
                             let now = Date().GMTTimeDate {
                             let from = Date(timeIntervalSince1970: dt + timezone)
                             if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute > 10 {
-                                AlamofireWrapper.isAPIAvailable {
+                                AlamofireWrapper.isAPIAvailable(success: {
                                     self.today(lat: lat, lon: lon)
-                                }
+                                }, failure: {
+                                        self.delegate?.notifyGettingTodaySuccess(response: todayResponse)
+                                    })
                                 return
                             }
                         }
@@ -79,9 +81,11 @@ class WeatherApi {
                         if let from = forecastResponse?.list?.first?.dtTxt?.toDate(format: "yyyy-MM-dd HH:mm:ss"),
                             let now = Date().GMTTimeDate {
                             if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute >= 360 {
-                                AlamofireWrapper.isAPIAvailable {
+                                AlamofireWrapper.isAPIAvailable(success: {
                                     self.forecast(lat: lat, lon: lon)
-                                }
+                                }, failure: {
+                                        self.delegate?.notifyGettingForecastSuccess(response: forecastResponse)
+                                    })
                                 return
                             }
                         }

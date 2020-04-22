@@ -10,7 +10,7 @@ import Alamofire
 
 class AlamofireWrapper {
 
-    static func isAPIAvailable(completion: @escaping () -> Void) {
+    static func isAPIAvailable(success: @escaping () -> Void, failure: @escaping () -> Void) {
         guard UIApplication.reachability.currentReachabilityStatus() != NotReachable else {
             return
         }
@@ -21,8 +21,9 @@ class AlamofireWrapper {
             .responseData { response in
                 switch response.result {
                 case .success:
-                    completion()
+                    success()
                 case .failure(let error):
+                    failure()
                     print(error)
                 }
         }
