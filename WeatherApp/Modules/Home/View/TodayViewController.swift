@@ -91,14 +91,13 @@ class TodayViewController: UIViewController {
     }
 
     private func updateFRD(temp: Float?) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let uuidString = UIDevice.current.identifierForVendor?.uuidString,
+        guard let uuidString = UIDevice.current.identifierForVendor?.uuidString,
             let currentLatitude = currentLatitude,
             let currentLongitude = currentLongitude,
             let temp = temp else {
                 return
         }
-        appDelegate.ref.child("devices").child(uuidString).setValue([
+        UIApplication.appDelegate.ref.child("devices").child(uuidString).setValue([
             "cord": [
                 "lat": currentLatitude,
                 "lon": currentLongitude

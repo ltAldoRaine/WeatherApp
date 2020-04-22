@@ -33,12 +33,15 @@ class WeatherApi {
                     case .success:
                         let todayResponse = response.value
                         // MARK - Renew cache if difference between api date and current date is greater than 10 minute
+                        // Renew cache only when internet connection is available
                         if let dt = todayResponse?.dt,
                             let timezone = todayResponse?.timezone,
                             let now = Date().GMTTimeDate {
                             let from = Date(timeIntervalSince1970: dt + timezone)
                             if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute > 10 {
-                                self.today(lat: lat, lon: lon)
+                                AlamofireWrapper.isAPIAvailable {
+                                    self.today(lat: lat, lon: lon)
+                                }
                                 return
                             }
                         }
@@ -72,10 +75,13 @@ class WeatherApi {
                     case .success:
                         let forecastResponse = response.value
                         // MARK - Renew cache if difference between api date and current date is greater or equal than 6 hour
+                        // Renew cache only when internet connection is available
                         if let from = forecastResponse?.list?.first?.dtTxt?.toDate(format: "yyyy-MM-dd HH:mm:ss"),
                             let now = Date().GMTTimeDate {
                             if let minute = Calendar.current.dateComponents([.minute], from: from, to: now).minute, minute >= 360 {
-                                self.forecast(lat: lat, lon: lon)
+                                AlamofireWrapper.isAPIAvailable {
+                                    self.forecast(lat: lat, lon: lon)
+                                }
                                 return
                             }
                         }

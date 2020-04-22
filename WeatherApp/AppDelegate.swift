@@ -14,6 +14,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var ref: DatabaseReference!
+    var reachability = Reachability()
 
     private func setURLCacheCapacity() {
         URLCache.shared.diskCapacity = 200 * 1024 * 1024
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setURLCacheCapacity()
         FirebaseApp.configure()
         ref = Database.database().reference()
+        reachability = Reachability.forInternetConnection()
+        reachability.startNotifier()
         return true
     }
 
