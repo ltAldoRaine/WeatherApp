@@ -12,6 +12,7 @@ class AlamofireWrapper {
 
     static func isAPIAvailable(success: @escaping () -> Void, failure: @escaping () -> Void) {
         guard UIApplication.reachability.currentReachabilityStatus() != NotReachable else {
+            failure()
             return
         }
         // MARK - We need to check if internet connection is really available, for that we make request to google
